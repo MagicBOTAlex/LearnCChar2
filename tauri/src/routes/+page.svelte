@@ -5,6 +5,8 @@
   // A little further down, it says: "The string provided to Command.sidecar must match one of the strings defined in the externalBin configuration array."
 
   // That was venting lol. I forgor...💀
+
+  window.location.href = "/learn/basic";
 </script>
 
 <div class="prose grid place-items-center h-full">
