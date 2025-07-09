@@ -184,3 +184,13 @@
 .debug * {
   border: dotted 5px mediumslateblue !important;
 }
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
