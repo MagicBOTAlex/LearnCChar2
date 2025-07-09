@@ -6,6 +6,8 @@
   export let sentence: CSentence;
   let currentChar = 1;
 
+  let charSize = -1;
+
   let sentenceHolder: HTMLDivElement;
   let sentencePadding: number = 0;
 
@@ -13,14 +15,19 @@
     sentencePadding = 0;
     await tick();
 
-    let totalWidth = sentenceHolder.clientWidth;
-    let singleCharWidth = totalWidth / sentence.chars.length; 
+    let totalWidth = sentenceHolder.scrollWidth;
+    charSize = totalWidth / sentence.chars.length; 
 
-    sentencePadding = singleCharWidth;
+    sentencePadding = charSize;
   }
 
-  function scrollToNext(){
-    
+  function scrollToIndex(index: number){
+    const leftPadding = charSize;
+    const scrollTarget =  index * charSize;
+    sentenceHolder.scrollTo({
+      left: scrollTarget,
+      behavior: "smooth",
+    });
   }
 
   let interval: number | undefined = undefined;
@@ -28,6 +35,7 @@
     interval = setInterval(()=>{
       currentChar += 1;
       currentChar = currentChar % sentence.chars.length;
+      scrollToIndex(currentChar);
       console.log(currentChar)
     }, 1000);
 
@@ -38,11 +46,11 @@
 </script>
 
 <div class="w-full" style="height: 70%">
-    <div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full  items-center overflow-x-scroll">
-      <div class="h-32 bg-rose-500" style="width: {sentencePadding}px;"></div>
-      {#each sentence.chars as char, i}
-        <CCharCard bind:cchar={char} isActive={i == currentChar} showPinyin={i < currentChar}/>
-      {/each}
-      <div class="h-32 bg-rose-500" style="width: {sentencePadding}px;"></div>
-    </div>
+  <div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full  items-center overflow-x-scroll">
+    <div class="h-32 " style="width: {sentencePadding}px;"></div>
+    {#each sentence.chars as char, i}
+      <CCharCard bind:cchar={char} isActive={i == currentChar} showPinyin={i < currentChar}/>
+    {/each}
+    <div class="h-32 " style="width: {sentencePadding}px;"></div>
   </div>
+</div>
