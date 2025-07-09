@@ -45,12 +45,12 @@
   onDestroy(()=> {clearInterval(interval)})
 </script>
 
-<div class="w-full" style="height: 70%">
-  <div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full scrollbar-none items-center overflow-x-scroll">
-    <div class="h-32 " style="width: {sentencePadding}px;"></div>
-    {#each sentence.chars as char, i}
-      <CCharCard bind:cchar={char} isActive={i == currentChar} showPinyin={i < currentChar}/>
-    {/each}
-    <div class="h-32 " style="width: {sentencePadding}px;"></div>
-  </div>
+
+<div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full scrollbar-none items-center overflow-x-scroll">
+  <div class="h-32 " style="width: {sentencePadding}px;"></div>
+  {#each sentence.chars as char, i}
+    <CCharCard bind:cchar={char} isActive={i == currentChar} showPinyin={i < currentChar}/>
+  {/each}
+  <div class="h-32 " style="width: {sentencePadding}px;"></div>
 </div>
+

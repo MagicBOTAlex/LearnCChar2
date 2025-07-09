@@ -6,7 +6,9 @@
 
 <div class=" flex flex-col items-center h-full w-full">
   <div>{sentence.chars.map(x=>x.char).join("")}</div>
-  <CSentenceElement bind:sentence/>
+  <div class="w-full flex items-center justify-center" style="height: 70%">
+    <CSentenceElement bind:sentence/>
+  </div>
   <div class="flex grow w-full border-t border-t-base-200">
     <div class="grid grid-cols-2 items-center w-full">
       {#each { length: 4 } as _, i}
