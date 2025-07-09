@@ -6,9 +6,13 @@
   export let showPinyin = true;
 </script>
 
-<div class="flex flex-col {isActive ? '' : 'opacity-80'}">
+<div class="flex flex-col {isActive ? '' : 'opacity-50'}">
   <div class="text-9xl">{cchar?.char}</div>
-  {#if showPinyin}
-    <div>{cchar?.pinyin}</div>
-  {/if}
+  <span>
+    {#if showPinyin}
+    {cchar?.pinyin}
+    {:else}
+      <br>
+    {/if}
+  </span>
 </div>
