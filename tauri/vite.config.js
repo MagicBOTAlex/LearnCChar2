@@ -28,18 +28,17 @@ export default defineConfig(async () => ({
       : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
-      ignored: [
-        "**/src-tauri/**"
-      ],
+      ignored: ["**/src-tauri/**"],
     },
   },
   resolve: {
     alias: {
       "@images": path.resolve(__dirname, "./src/images"),
       "@src": path.resolve(__dirname, "./src"),
+      "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },
   build: {
-    target: 'esnext'
-  }
+    target: "esnext",
+  },
 }));
