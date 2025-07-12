@@ -10,6 +10,7 @@
 
   let sentenceHolder: HTMLDivElement;
   let sentencePadding: number = 0;
+  let screenWidth: number = 0;
 
   async function recalculatePadding() {
     sentencePadding = 0;
@@ -18,12 +19,13 @@
     let totalWidth = sentenceHolder.scrollWidth;
     charSize = totalWidth / sentence.chars.length; 
 
-    sentencePadding = charSize;
+    sentencePadding = ( totalWidth - charSize ) / 2;
   }
 
-  function scrollToIndex(index: number){
-    const leftPadding = charSize;
-    const scrollTarget =  index * charSize;
+  function scrollToIndex(index: number) {
+    // center offset: half viewport minus half card
+    const centerOffset = containerWidth / 2 - cardWidth / 2;
+    const scrollTarget = index * cardWidth - centerOffset;
     sentenceHolder.scrollTo({
       left: scrollTarget,
       behavior: "smooth",
@@ -45,6 +47,7 @@
   onDestroy(()=> {clearInterval(interval)})
 </script>
 
+<svelte:window on:resize={recalculatePadding}/>
 
 <div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full scrollbar-none items-center overflow-x-scroll">
   <div class="h-32 " style="width: {sentencePadding}px;"></div>
