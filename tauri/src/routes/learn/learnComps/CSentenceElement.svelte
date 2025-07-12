@@ -22,10 +22,10 @@
     sentencePadding = ( totalWidth - charSize ) / 2;
   }
 
+  // Idk what i did, but it works. so imma not question it
   function scrollToIndex(index: number) {
-    // center offset: half viewport minus half card
-    const centerOffset = containerWidth / 2 - cardWidth / 2;
-    const scrollTarget = index * cardWidth - centerOffset;
+    const centerOffset = screenWidth / 2  ;
+    const scrollTarget = index * charSize - centerOffset;
     sentenceHolder.scrollTo({
       left: scrollTarget,
       behavior: "smooth",
@@ -45,15 +45,16 @@
   });
 
   onDestroy(()=> {clearInterval(interval)})
+  let testClass = "bg-white";
 </script>
 
 <svelte:window on:resize={recalculatePadding}/>
 
 <div bind:this={sentenceHolder} class="grid grid-rows-1 grid-flow-col w-full scrollbar-none items-center overflow-x-scroll">
-  <div class="h-32 " style="width: {sentencePadding}px;"></div>
+  <div class="h-32 {testClass}" style="width: {sentencePadding}px;"></div>
   {#each sentence.chars as char, i}
     <CCharCard bind:cchar={char} isActive={i == currentChar} showPinyin={i < currentChar}/>
   {/each}
-  <div class="h-32 " style="width: {sentencePadding}px;"></div>
+  <div class="h-32 {testClass}" style="width: {sentencePadding}px;"></div>
 </div>
 
