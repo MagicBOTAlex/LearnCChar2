@@ -45,7 +45,7 @@
   });
 
   onDestroy(()=> {clearInterval(interval)})
-  let testClass = "bg-white";
+  let testClass = "";
 </script>
 
 <svelte:window on:resize={recalculatePadding}/>
