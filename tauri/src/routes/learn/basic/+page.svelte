@@ -1,7 +1,9 @@
 <script lang="ts">
-  import {CChar, CSentence} from "@lib/types/CChar";
-  let sentence: CSentence = new CSentence([new CChar("正", "Zhen"), new CChar("气", "Qi"), new CChar("合", "Hui") ]);
+  import {CChar, CSentence, CQuestion} from "@lib/types/CChar";
   import CSentenceElement from "../learnComps/CSentenceElement.svelte";
+
+  let sentence: CSentence = new CSentence([new CChar("正", "Zhen"), new CChar("气", "Qi"), new CChar("合", "Hui") ]);
+  let quesiton: CQuestion = new CQuestion(sentence, [new CChar("正", "Zhen"), new CChar("气", "Qi"), new CChar("合", "Hui") ]);
 </script>
 
 <div class=" flex flex-col items-center h-full w-full">

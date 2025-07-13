@@ -11,3 +11,10 @@ export class CChar {
 export class CSentence {
   public constructor(public chars: CChar[]) {}
 }
+
+export class CQuestion {
+  public constructor(
+    public sentence: CSentence,
+    public availableChars: CChar[],
+  ) {}
+}
