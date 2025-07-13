@@ -7,7 +7,7 @@
 </script>
 
 <div class=" flex flex-col items-center h-full w-full">
-  <div>{sentence.chars.map(x=>x.char).join("")}</div>
+  <div>{quesiton.sentence.chars.map(x=>x.char).join("")}</div>
   <div class="w-full flex items-center justify-center" style="height: 70%">
     <CSentenceElement bind:sentence/>
   </div>
